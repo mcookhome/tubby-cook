@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<title> Tubby-Cook </title>
+
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+
+<br>
+<br>
+
+<h1 align="center"> Tubby Cook </h1>
+
+<body>
+{% if loggedin %}
+You are logged in as {{username}}
+{% endif %}
+
+{% if not loggedin %}
+{% block text %}
+<h2 align="center">Welcome to our page</h2>
+{% endblock %}
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block text %}
+{% if prevlog %}
+You have logged out.
+{% endif %}
+{% if not prevlog %}
+You were never logged in silly goose!
+{% endif %}
+{% endblock %}
