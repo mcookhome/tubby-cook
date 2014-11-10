@@ -1,32 +1,30 @@
-from flask import Flask,request,url_for,redirect,render_template,session
+from flask import Flask,url_for,redirect,render_template,session
+from flask import request
 import urllib2, json
 import pymongo, csv
 
-conn=pymongo.MongoClient()
-db=conn.tubbycook
-accounts=db.accounts
+
 
 app=Flask(__name__)
 
-@app.route("/")
-@app.route("/home")
+@app.route("/", methods=['GET', 'POST'])
 def home():
     return render_template("base.html")
 
-@app.route("/t")
-@app.route("/t/<tag>")
-def t(tag="cream puffs"):
-        tag.replace(" ", "+")
-	url = "http://api.yelp.com/v2/search?term=%s&location=San+Francisco"
-	url = url%(tag)
-	request = urllib2.urlopen(url)
-	res_string = request.read()
-	d = json.loads(res_string)
-	page = ""
-	for r in d['response']:
-		if 'photos' in r.keys():
-			page = page +"<img height=200 src=%s>"%(r['photos'][0]['original_size']['url'])
-	return page
+@app.route("/t", methods=['GET', 'POST'])
+def t():
+    if request.method == "POST":
+        tag= request.form['tag']
+        location=request.form['loc']
+    tag.replace(" ", "+")
+    location.replace(" ", "+")
+    print tag
+    print location
+    url = "http://api.yelp.com/v2/search?term="+tag+"&location="+location
+    request = urllib2.urlopen(url)
+    res_string = request.read()
+    d = json.loads(res_string)
+    return "<h1>hello</h1>"
 
 
 
