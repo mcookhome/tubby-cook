@@ -22,6 +22,8 @@ def t():
         req = urllib2.urlopen(url)
         res_string = req.read()
         d = json.loads(res_string)
+        page=""
+        print d
         return "<h1>hello</h1>"
     else:
         return render_template("base.html")
