@@ -8,24 +8,10 @@
 
 <br>
 <br>
-<div id="menu">
-  <div class="pure-menu pure-menu-open pure-menu-horizontal">
-    <a class="pure-menu-heading" href="/">Tubby Cook</a>
-    <ul>
-      <li><a href="/home">Home</a></li>
-      <li><a href="/login">Login</a></li>
-      <li><a href="/register">Register</a></li>
-      <li><a href="/logout">Logout</a></li>
-    </ul>
-  </div>
-</div>
 
 <h1 align="center"> Tubby Cook </h1>
 
 <body>
-{% if loggedin %}
-You are logged in as {{username}}
-{% endif %}
 
 {% if not loggedin %}
 {% block text %}
