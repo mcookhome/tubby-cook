@@ -1,9 +1,6 @@
 from flask import Flask,url_for,redirect,render_template,session
 from flask import request
 import urllib2, json
-import pymongo, csv
-
-
 
 app=Flask(__name__)
 
@@ -16,15 +13,18 @@ def t():
     if request.method == "POST":
         tag= request.form['tag']
         location=request.form['loc']
-    tag.replace(" ", "+")
-    location.replace(" ", "+")
-    print tag
-    print location
-    url = "http://api.yelp.com/v2/search?term="+tag+"&location="+location
-    request = urllib2.urlopen(url)
-    res_string = request.read()
-    d = json.loads(res_string)
-    return "<h1>hello</h1>"
+        tag=tag.replace(" ", "+")
+        location=location.replace(" ", "+")
+        print tag
+        print location
+        url = "http://api.yelp.com/v2/search?term="+tag+"&location="+location
+        print url
+        req = urllib2.urlopen(url)
+        res_string = req.read()
+        d = json.loads(res_string)
+        return "<h1>hello</h1>"
+    else:
+        return render_template("base.html")
 
 
 
