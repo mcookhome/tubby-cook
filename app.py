@@ -43,7 +43,7 @@ def t():
     if request.method == "POST":
         tag= request.form['tag']
         location=request.form['loc']
-        url_params ={'tag':tag.replace(" ", "+"),'location':location.replace(" ", "+"), 'limit': 5}
+        url_params ={'term':tag.replace(" ", "+"),'location':location.replace(" ", "+"), 'limit': 1, 'category_filter': 'food'}
         print req(url_params)
         return "<h1>hello</h1>"
     else:
