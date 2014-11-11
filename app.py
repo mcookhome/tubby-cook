@@ -43,8 +43,9 @@ def t():
     if request.method == "POST":
         tag= request.form['tag']
         location=request.form['loc']
-        url_params ={'term':tag.replace(" ", "+"),'location':location.replace(" ", "+"), 'limit': 1, 'category_filter': 'food'}
-        print req(url_params)
+        url_params ={'term':tag.replace(" ", "+"),'location':location.replace(" ", "+"), 'limit': 5, 'category_filter': 'food'}
+        for x in req(url_params)['businesses']:
+            print x[u'name']+" - "+x[u'snippet_text'].replace("\n"," ")
         return "<h1>hello</h1>"
     else:
         return render_template("base.html")
