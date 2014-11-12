@@ -1,6 +1,7 @@
 from flask import Flask,url_for,redirect,render_template,session,request
 import urllib2, json,unicodedata
 import oauth2
+from random import shuffle
 
 app=Flask(__name__)
 
@@ -88,7 +89,9 @@ def spot(name="Dianda's+Italian+American+Pastry"):
                 i = i+1
     print songids
     songids[:]=[unicodedata.normalize('NFKD',o).encode('ascii','ignore') for o in songids]
+    shuffle(songids)
     print songids
+
     tracklist=""
     for n in songids:
         tracklist += n + ","
