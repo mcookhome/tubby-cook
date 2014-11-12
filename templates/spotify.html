@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 helo
 {% block text %}
-{{s}}
-<iframe src="https://embed.spotify.com/?uri=spotify:trackset:thisplaylist:{{s}}" frameborder="0" allowtransparency="true"></iframe>
-
+<center>
+<iframe src="https://embed.spotify.com/?uri=spotify:trackset:{{name}}:{{s}}" frameborder="0" allowtransparency="true"></iframe>
+</center>
 {% endblock %}

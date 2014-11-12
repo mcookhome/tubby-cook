@@ -55,9 +55,9 @@ def t():
     else:
         return render_template("base.html")
 
-@app.route("/spot", methods=['GET', 'POST'])
-def spot():
-    stri="Dianda's Italian American Pastry"
+@app.route("/spot/<name>", methods=['GET', 'POST'])
+def spot(name="Dianda's Italian American Pastry"):
+    stri=name
     L=stri.split()
     L[:] = [ urlify(o) for o in L]
     print L
@@ -90,8 +90,7 @@ def spot():
         tracklist += n + ","
     tracklist = tracklist[:-1]
     print "dingdong"+tracklist
-        
-    return render_template("spotify.html", s=tracklist)
+    return render_template("spotify.html", name = stri,s=tracklist)
     
 def urlify(s):
     url = "https://api.spotify.com/v1/search?q=" +s+ "&type=track"
