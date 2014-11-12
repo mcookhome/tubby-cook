@@ -45,13 +45,13 @@ def t():
     if request.method == "POST":
         tag= request.form['tag']
         location=request.form['loc']
-        url_params ={'term':tag.replace(" ", "+"),'location':location.replace(" ", "+"), 'limit': 5, 'category_filter': 'food'}
+        url_params ={'term':tag.replace(" ", "+"),'location':location.replace(" ", "+"), 'limit': 10, 'category_filter': 'food'}
 
-        page = ""
+        page = []
         for x in req(url_params)['businesses']:
             print x[u'name']+" - "+x[u'snippet_text'].replace("\n"," ")
-            page += x[u'name']+" - "+x[u'snippet_text'].replace("\n"," ") + "<br>"
-        return page
+            page.append(x[u'name']+" - "+x[u'snippet_text'].replace("\n"," "))
+        return render_template("yelp.html", page=page)
     else:
         return render_template("base.html")
 
