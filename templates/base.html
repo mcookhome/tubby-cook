@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+body{
+background-color: #FFFF99;
+
+}
+input{
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-flow: row wrap; /* Safari 6.1+ */
+    -webkit-align-content: space-around; /* Safari 7.0+ */
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-around;
+}
+html{
+cursor:url(../static/cursor.cur),zoom-out;
+}
+
+</style>
 </head>
 <title> Tubby-Cook </title>
 
@@ -17,7 +35,8 @@
 {% block text %}
 <h2 align="center">Welcome to our page</h2>
 <form name="input" class="pure-form" action="/t" method="POST">
- Food: <input type="text" class="pure-input-rounded" name="tag" placeholder="Cream Puffs">
+<center> 
+Food: <input type="text" class="pure-input-rounded" name="tag" placeholder="Cream Puffs">
   <br>
 
  Location:<input type="text" class="pure-input-rounded" name="loc" placeholder="San Francisco">
@@ -25,6 +44,7 @@
  
 <input type="submit" value="Submit" class="button-submit pure-button">
 </form>
+</center>
 {% endblock %}
 </body>
 </html>
