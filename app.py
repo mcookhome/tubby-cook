@@ -60,9 +60,9 @@ def t():
         return render_template("base.html")
 
 @app.route("/spot/<name>", methods=['GET', 'POST'])
-def spot(name="Dianda's Italian American Pastry"):
+def spot(name="Dianda's+Italian+American+Pastry"):
     stri=name
-    L=stri.split()
+    L=stri.split("+")
     L[:] = [ urlify(o) for o in L]
     print L
     k = 20/len(L)-1
