@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block text %}
-{% for x in page %}
-{{x}} <br>
+{% for x in range(10) %}
+<a href={{namelink[x]}}>{{names[x]}}</a> - {{snippets[x]}} <br>
 {% endfor %}
 {% endblock %}

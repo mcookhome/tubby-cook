@@ -47,11 +47,15 @@ def t():
         location=request.form['loc']
         url_params ={'term':tag.replace(" ", "+"),'location':location.replace(" ", "+"), 'limit': 10, 'category_filter': 'food'}
 
-        page = []
+        names=[]
+        snippets=[]
+        namelink=[]
         for x in req(url_params)['businesses']:
             print x[u'name']+" - "+x[u'snippet_text'].replace("\n"," ")
-            page.append(x[u'name']+" - "+x[u'snippet_text'].replace("\n"," "))
-        return render_template("yelp.html", page=page)
+            names.append(x[u'name'])
+            snippets.append(x[u'snippet_text'].replace("\n"," "))
+            namelink.append("/spot/"+x[u'name'].replace(" ","+"))
+        return render_template("yelp.html", names=names,snippets=snippets,namelink=namelink)
     else:
         return render_template("base.html")
 
